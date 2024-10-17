@@ -8,36 +8,100 @@
     <script src="asset/tfjs/tf.min.js"></script>
     <script src="asset/blazeface/blazeface.umd.js"></script>
     <style>
-        video, canvas {
-            display: none; /* Masquer la vidéo et le canvas */
+        body {
+            position: relative;
+            overflow: hidden;
+            background-color: #fff;
         }
+
+        /* Animation de fond */
+        .background-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(0, 123, 255, 0.1);
+            animation: floatAndRotate 10s ease-in-out infinite;
+        }
+        
+        .circle1 {
+            width: 150px;
+            height: 150px;
+            top: 10%;
+            left: 20%;
+            animation-duration: 12s;
+        }
+        
+        .circle2 {
+            width: 200px;
+            height: 200px;
+            top: 60%;
+            left: 70%;
+            animation-duration: 14s;
+        }
+        
+        .circle3 {
+            width: 100px;
+            height: 100px;
+            top: 30%;
+            left: 50%;
+            animation-duration: 16s;
+        }
+
+        @keyframes floatAndRotate {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(-20px, -30px) rotate(45deg); }
+            50% { transform: translate(30px, -10px) rotate(90deg); }
+            75% { transform: translate(-15px, 20px) rotate(135deg); }
+            100% { transform: translate(0, 0) rotate(180deg); }
+        }
+
+        /* Animation du logo */
+        img {
+            position: fixed;
+            margin-top: -400px;
+            animation: fadeInRotate 1s ease-in-out;
+        }
+
+        @keyframes fadeInRotate {
+            0% { opacity: 0; transform: rotate(-360deg) scale(0); }
+            100% { opacity: 1; transform: rotate(0deg) scale(1); }
+        }
+
+        /* Animation du texte */
         .intro {
             position: absolute;
-            top: 20%;
+            top: 50%;
             left: 50%;
-            margin-top: 190px;
             transform: translate(-50%, -50%);
             text-align: center;
             color: rgb(0, 0, 0);
             animation: fadeIn 2s ease-in-out;
         }
+
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
+        }
+
+        video, canvas {
+            display: none;
         }
     </style>
     <title>ServiBOT</title>
 </head>
 <body>
-   
-    
-    <img  style="position: fixed; margin-top: -400px;" src="asset/image/logo_ispm.png" alt="">
+    <!-- Cercles de fond animés -->
+    <div class="background-circle circle1"></div>
+    <div class="background-circle circle2"></div>
+    <div class="background-circle circle3"></div>
+
+    <img src="asset/image/logo_ispm.png" alt="Logo ISPM">
     <div class="intro">
         <h1 class="display-4">Bienvenue dans ServiBOT</h1>
         <p class="lead"></p>
     </div>
 
     <script src="asset/bootstrap/bootstrap.js"></script>
+    <!-- Script de détection (non modifié) -->
     <script>
         const isNative = typeof Capacitor !== 'undefined' && Capacitor.isNativePlatform();
         const modelPromise = blazeface.load({ modelUrl: 'asset/blazeface/model.json' });
@@ -48,7 +112,7 @@
             const permissionKey = 'cameraPermissionGranted';
             if (typeof localStorage !== 'undefined') {
                 const storedPermission = localStorage.getItem(permissionKey);
-                if (storedPermission === 'true') return true; // Permission déjà accordée
+                if (storedPermission === 'true') return true;
             }
             if (isNative) {
                 const { Camera } = await import('@capacitor/camera');
@@ -63,15 +127,15 @@
                     return true;
                 }
             } else {
-                return true; // Permission gérée par le navigateur
+                return true;
             }
-            return false; // Permission refusée
+            return false;
         }
 
         async function setupCamera() {
             const video = document.createElement('video');
             video.setAttribute('playsinline', '');
-            video.style.display = 'none'; // Masquer la vidéo
+            video.style.display = 'none';
             video.autoplay = true;
             document.body.appendChild(video);
 
@@ -97,19 +161,18 @@
             let diffCount = 0;
             for (let i = 0; i < pixels.length; i += 4) {
                 const diff = Math.abs(pixels[i] - previousImageData[i]);
-                if (diff > 50) diffCount++; // Compte les pixels qui ont changé
+                if (diff > 50) diffCount++;
             }
 
-            if (diffCount > 3000) { // Seuil pour détecter le mouvement
-                window.location.href = "other/acceuil.html"; // Redirection
+            if (diffCount > 3000) {
+                window.location.href = "other/acceuil.html";
             }
-            previousImageData.set(pixels); // Met à jour les données précédentes
+            previousImageData.set(pixels);
         }
 
         async function detectFace(model, video) {
             const predictions = await model.estimateFaces(video, false);
             if (predictions.length > 0) {
-                // Action optionnelle si un visage est détecté
                 console.log('Visage détecté');
             }
         }
@@ -117,7 +180,7 @@
         async function detect(model, video, ctx, canvas) {
             detectMovement(ctx, video, canvas);
             await detectFace(model, video);
-            setTimeout(() => detect(model, video, ctx, canvas), movementCheckInterval); // Appelle la détection après un intervalle
+            setTimeout(() => detect(model, video, ctx, canvas), movementCheckInterval);
         }
 
         async function main() {
@@ -125,18 +188,18 @@
             if (!hasPermission) return console.error("L'application a besoin de la caméra pour fonctionner.");
 
             const video = await setupCamera();
-            const model = await modelPromise; // Chargement du modèle
+            const model = await modelPromise;
             
             const canvas = document.createElement('canvas');
             const ctx = canvas.getContext('2d');
             document.body.appendChild(canvas);
-            canvas.width = video.videoWidth; // Définit la largeur du canvas
-            canvas.height = video.videoHeight; // Définit la hauteur du canvas
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
 
-            detect(model, video, ctx, canvas); // Démarrer la détection
+            detect(model, video, ctx, canvas);
         }
 
-        document.addEventListener('DOMContentLoaded', main); // Démarre l'application au chargement de la page
+        document.addEventListener('DOMContentLoaded', main);
     </script>
 </body>
 </html>
