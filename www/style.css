@@ -1,0 +1,81 @@
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, sans-serif;
+    color: #fff;
+    overflow: hidden;
+}
+p{
+    font-size: 9px;
+}
+.animated-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #cccccc, #565454, #0e0e0e, #373737);
+    background-size: 400% 400%;
+    animation: gradientAnimation 10s ease infinite;
+    z-index: -1; /* Pour qu'il soit en arrière-plan */
+}
+img{
+    border-radius: 10px; /* Coins arrondis */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ajoute une ombre */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Ajoute une transition */
+}
+.img:hover {
+    transform: scale(1.05); /* Zoom léger */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Accentue l'ombre */
+}
+
+@media (max-width: 600px) {
+    img {
+        max-width: 150px; /* Réduit la taille pour les petits écrans */
+    }
+}
+.logo {
+    width: 45px; /* Taille de l'image */
+    position: fixed;
+    border-radius: 50%;
+    top: 50px;
+    left: 0;
+    margin-top: -50px;
+    animation: moveRight 3s infinite alternate; /* Animation avec 3s de durée */
+}
+
+@keyframes moveRight {
+    0% {
+        left: 0; /* Début à gauche */
+    }
+    100% {
+        left: calc(100% - 100px); /* Fin à droite de la fenêtre */
+    }
+}
+/* Animation du dégradé */
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+.order-count{
+    border: 1px 1px solid green;
+    background-color: rgb(7, 117, 51);
+    color: white;
+    border-radius: 50%;
+    position: fixed;
+    padding: 0px 7px 0px 7px;
+   
+}
+

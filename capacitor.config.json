@@ -1,0 +1,6 @@
+{
+  "appId": "com.ispm.Servibot",
+  "appName": "Servibot",
+  "webDir": "www",
+  "bundledWebRuntime": false
+}

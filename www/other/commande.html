@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accueil</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../asset/bootstrap/bootstrap.css">
+    <link rel="stylesheet" href="commande.css">
+</head>
+<body>
+    <header class="sticky-header" style="color: aliceblue;  ">
+        <h1 class="fixed-top" style="background-color: black; text-align: center;border: 1px 1px solid black;position: fixed;width: 100%;margin-left: 0px;">
+            VOS COMMANDES <img src="../asset/image/logo_ispm.png" alt="Logo" class="logo">
+        </h1>
+</header>
+    <div class="animated-background"></div>
+
+
+    <body>
+        
+        <div class="order-container" >
+            <div style="border: 1px 1px solid white;background-color: aliceblue; color: aliceblue; margin-top: 50px;">
+                <p>'</p>
+            </div>
+            <h2>Résumé de la Commande</h2>
+            <table>
+                <thead >
+                    <tr>
+                        <th style="font-size: 10px;">Nom du Plat</th>
+                        <th style="font-size: 10px;">Prix (MGA)</th>
+                        <th style="font-size: 10px;">Quantité</th>
+                        <th style="font-size: 10px;">Sous-total (MGA)</th>
+                        <th style="font-size: 10px;">Action</th>
+                    </tr>
+                </thead>
+                <tbody id="orderList"></tbody>
+            </table>
+            <div id="totalAmount"></div>
+            <button class="send-order-btn" onclick="sendOrder(),saveCommande()">Envoyer la Commande</button>
+            <div id="confirmationMessage"></div>
+            <div style="border: 1px 1px solid white;background-color: aliceblue; color: aliceblue; margin-bottom: 50px;">
+                <p>'</p>
+            </div>
+        </div>
+    
+        <nav class="navbar navbar-dark fixed-bottom"style="background-color: black; text-decoration: none;">
+        <div class="container">
+            <a class="navbar-brand" href="acceuil.html" style="font-size: 12px;">Accueil</a>
+            <a class="navbar-brand" href="menu.html" style="font-size: 12px;">Menu</a>
+            <a class="navbar-brand" href="commande.html" style="font-size: 12px;">Commande </a>
+            <a class="navbar-brand" href="commentaire.html" style="font-size: 12px;">Commentaire</a>
+        </div>
+    </nav>
+     
+    <script type="module">
+        import { initDetection } from './detecteur.js';
+
+        window.addEventListener('DOMContentLoaded', () => {
+            initDetection(); // Initialise la détection au démarrage de la page
+        });
+    </script>
+    <script src="../asset/tfjs/tf.min.js"></script>
+    <script src="../asset/blazeface/blazeface.umd.js"></script>
+    <script src="detecteur.js"></script>
+    <script src="commande.js"></script>
+    <script src="../asset/bootstrap/bootstrap.js"></script>
+    <script src="../main.js"></script>
+</body>
+</html>

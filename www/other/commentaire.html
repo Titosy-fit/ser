@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accueil</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="commentaire.css">
+    <link rel="stylesheet" href="../asset/bootstrap/bootstrap.css">
+</head>
+<body>
+    <header class="sticky-header" style="color: aliceblue;  ">
+        <h1 class="fixed-top" style="background-color: black; text-align: center;border: 1px 1px solid black;position: fixed;width: 100%;margin-left: 0px; ">
+            EXPRIMEZ VOUS<img src="../asset/image/logo_ispm.png" alt="Logo" class="logo">
+        </h1>
+</header>
+    <div class="animated-background"></div>
+
+    
+
+        <nav class="navbar navbar-dark fixed-bottom"style="background-color: black; text-decoration: none;">
+        <div class="container">
+            <a class="navbar-brand" href="acceuil.html" style="font-size: 12px;">Accueil</a>
+            <a class="navbar-brand" href="menu.html" style="font-size: 12px;">Menu</a>
+            <a class="navbar-brand" href="commande.html" style="font-size: 12px;">Commande <span class="order-count"></span></a>
+            <a class="navbar-brand" href="commentaire.html" style="font-size: 12px;">Commentaire</a>
+        </div>
+    </nav>
+
+
+    <div class="comment-section">
+        <h2>Commentaires</h2>
+        <!-- Formulaire de commentaire -->
+        <div class="comment-form">
+            <textarea id="comment-input" placeholder="Écrivez votre commentaire Anonyme ici..."></textarea>
+            <button onclick="addComment(),saveCommentaire()">Poster le commentaire</button>
+        </div>
+        
+        <!-- Liste des commentaires -->
+        <div id="comment-list" class="comment-list">
+            <!-- Commentaires déjà présents -->
+            <div class="comment">
+                <div class="comment-header">
+                    <h4>Client Anonyme</h4>
+                    <span class="date">23 Octobre 2024</span>
+                </div>
+                <p>Somary nahazo sira ilay henomby!!!</p>
+            </div>
+            <div class="comment">
+                <div class="comment-header">
+                    <h4>Client Anonyme</h4>
+                    <span class="date">22 Octobre 2024</span>
+                </div>
+                <p>tsara ilay service vaovao sady aingana</p>
+            </div>
+            <div class="comment">
+                <div class="comment-header">
+                    <h4>Client Anonyme</h4>
+                    <span class="date">20 Octobre 2024</span>
+                </div>
+                <p>mba asio lasopy</p>
+            </div>
+        </div>
+    </div>
+     <div style="margin-bottom: -800px; border: 2px 2px 2px solid white;position:absolute;background-color: aliceblue;"><p>a</p></div>
+
+
+     <script type="module">
+        import { initDetection } from './detecteur.js';
+
+        window.addEventListener('DOMContentLoaded', () => {
+            initDetection(); // Initialise la détection au démarrage de la page
+        });
+    </script>
+    <script src="../asset/tfjs/tf.min.js"></script>
+    <script src="../asset/blazeface/blazeface.umd.js"></script>
+    <script src="detecteur.js"></script>
+    <script src="../asset/bootstrap/bootstrap.js"></script>
+    <script src="../main.js"></script>
+    <script src="commentaire.js"></script>
+</body>
+</html>

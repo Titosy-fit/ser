@@ -1,0 +1,36 @@
+.sary{
+    border: 2px 2px solid white;
+    background-color: aliceblue;
+    display: flex;
+    padding: 50px 20px 20px 20px;
+    position: absolute;
+    border-radius: 10px;
+    margin-left: 0px;
+}
+body{
+    overflow:scroll;
+}
+
+.styled-button {
+    background-color: #4CAF50; /* Couleur de fond */
+    color: white; /* Couleur du texte */
+    padding: 8px 16px; /* Espacement interne */
+    font-size: 8px; /* Taille de la police */
+    border: none; /* Enlève la bordure */
+    border-radius: 8px; /* Coins arrondis */
+    cursor: pointer; /* Curseur pointeur */
+    transition: all 0.3s ease; /* Transition pour effet lisse */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombre */
+}
+
+.styled-button:hover {
+    background-color: #45a049; /* Couleur de fond au survol */
+    transform: scale(1.05); /* Agrandit légèrement au survol */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Accentue l'ombre au survol */
+}
+
+.styled-button:active {
+    background-color: #3e8e41; /* Couleur de fond quand on clique */
+    transform: scale(0.95); /* Réduit légèrement pour un effet de clic */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Réduit l'ombre au clic */
+}

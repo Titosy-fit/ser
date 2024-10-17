@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="asset/bootstrap/bootstrap.css">
+    <script src="asset/tfjs/tf.min.js"></script>
+    <script src="asset/blazeface/blazeface.umd.js"></script>
+    <style>
+        video, canvas {
+            display: none; /* Masquer la vidéo et le canvas */
+        }
+        .intro {
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            animation: fadeIn 2s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+    <title>ServiBOT</title>
+</head>
+<body>
+    <div class="animated-background"></div>
+    <a class="navbar-brand" href="other/acceuil.html">Accueil</a>
+
+    <div class="intro">
+        <h1 class="display-4">Bienvenue dans ServiBOT</h1>
+        <p class="lead">Votre assistant intelligent pour une expérience améliorée.</p>
+    </div>
+
+    <script src="asset/bootstrap/bootstrap.js"></script>
+    <script>
+        const isNative = typeof Capacitor !== 'undefined' && Capacitor.isNativePlatform();
+        const modelPromise = blazeface.load({ modelUrl: 'asset/blazeface/model.json' });
+        let previousImageData = new Uint8ClampedArray();
+        const movementCheckInterval = 1000;
+
+        async function checkCameraPermissions() {
+            const permissionKey = 'cameraPermissionGranted';
+            if (typeof localStorage !== 'undefined') {
+                const storedPermission = localStorage.getItem(permissionKey);
+                if (storedPermission === 'true') return true; // Permission déjà accordée
+            }
+            if (isNative) {
+                const { Camera } = await import('@capacitor/camera');
+                const status = await Camera.checkPermissions();
+                if (status.camera === 'granted') {
+                    localStorage.setItem(permissionKey, 'true');
+                    return true;
+                }
+                const newStatus = await Camera.requestPermissions({ permissions: ['camera'] });
+                if (newStatus.camera === 'granted') {
+                    localStorage.setItem(permissionKey, 'true');
+                    return true;
+                }
+            } else {
+                return true; // Permission gérée par le navigateur
+            }
+            return false; // Permission refusée
+        }
+
+        async function setupCamera() {
+            const video = document.createElement('video');
+            video.setAttribute('playsinline', '');
+            video.style.display = 'none'; // Masquer la vidéo
+            video.autoplay = true;
+            document.body.appendChild(video);
+
+            const stream = await navigator.mediaDevices.getUserMedia({
+                video: { width: { ideal: 640 }, height: { ideal: 480 }, facingMode: 'user' }
+            });
+            video.srcObject = stream;
+            await new Promise((resolve) => {
+                video.onloadedmetadata = () => resolve(video);
+            });
+            return video;
+        }
+
+        function detectMovement(ctx, video, canvas) {
+            ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+            const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+            const pixels = imageData.data;
+
+            if (previousImageData.length !== pixels.length) {
+                previousImageData = new Uint8ClampedArray(pixels.length);
+            }
+
+            let diffCount = 0;
+            for (let i = 0; i < pixels.length; i += 4) {
+                const diff = Math.abs(pixels[i] - previousImageData[i]);
+                if (diff > 50) diffCount++; // Compte les pixels qui ont changé
+            }
+
+            if (diffCount > 3000) { // Seuil pour détecter le mouvement
+                window.location.href = "other/acceuil.html"; // Redirection
+            }
+            previousImageData.set(pixels); // Met à jour les données précédentes
+        }
+
+        async function detectFace(model, video) {
+            const predictions = await model.estimateFaces(video, false);
+            if (predictions.length > 0) {
+                // Action optionnelle si un visage est détecté
+                console.log('Visage détecté');
+            }
+        }
+
+        async function detect(model, video, ctx, canvas) {
+            detectMovement(ctx, video, canvas);
+            await detectFace(model, video);
+            setTimeout(() => detect(model, video, ctx, canvas), movementCheckInterval); // Appelle la détection après un intervalle
+        }
+
+        async function main() {
+            const hasPermission = await checkCameraPermissions();
+            if (!hasPermission) return console.error("L'application a besoin de la caméra pour fonctionner.");
+
+            const video = await setupCamera();
+            const model = await modelPromise; // Chargement du modèle
+            
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            document.body.appendChild(canvas);
+            canvas.width = video.videoWidth; // Définit la largeur du canvas
+            canvas.height = video.videoHeight; // Définit la hauteur du canvas
+
+            detect(model, video, ctx, canvas); // Démarrer la détection
+        }
+
+        document.addEventListener('DOMContentLoaded', main); // Démarre l'application au chargement de la page
+    </script>
+</body>
+</html>

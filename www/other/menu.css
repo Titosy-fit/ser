@@ -1,0 +1,143 @@
+.sary{
+    border: 2px 2px solid white;
+    background-color: aliceblue;
+    display: flex;
+    padding: 50px 0px 20px 20px;
+    position: absolute;
+    margin-top: -250px;
+    border-radius: 10px;
+    margin-left: -182px;
+}
+.sary1{
+    border: 2px 2px solid white;
+    background-color: aliceblue;
+    display: flex;
+    padding: 50px 5px 20px 20px;
+    position:absolute;
+    margin-top: 20px;
+    border-radius: 10px;
+    margin-left: -182px;
+}
+.sary2{
+    border: 2px 2px solid white;
+    background-color: aliceblue;
+    display:flex;
+    padding: 50px 5px 20px 20px;
+    position:absolute;
+    margin-top: 290px;
+    border-radius: 10px;
+    margin-left: -182px;
+    
+}
+.sary3{
+    border: 2px 2px solid white;
+    background-color: aliceblue;
+    display:flex;
+    padding: 50px 5px 20px 20px;
+    position:absolute;
+    margin-top: 560px;
+    border-radius: 10px;
+    margin-left: -140px;
+    
+}
+.sary4{
+    border: 2px 2px solid white;
+    background-color: aliceblue;
+    display:flex;
+    padding: 50px 5px 20px 20px;
+    position:absolute;
+    margin-top: 820px;
+    border-radius: 10px;
+    margin-left: -140px;
+    
+}
+.sary5{
+    border: 2px 2px solid white;
+    background-color: aliceblue;
+    display:flex;
+    padding: 50px 5px 20px 20px;
+    position:absolute;
+    margin-top: 1090px;
+    border-radius: 10px;
+    margin-left: -182px;
+    
+}
+.sary6{
+    border: 2px 2px solid white;
+    background-color: aliceblue;
+    display:flex;
+    padding: 50px 5px 20px 20px;
+    position:absolute;
+    margin-top: 1360px;
+    border-radius: 10px;
+    margin-left: -140px;
+    
+}
+.sary7{
+    border: 2px 2px solid white;
+    background-color: aliceblue;
+    display:flex;
+    padding: 50px 5px 20px 20px;
+    position:absolute;
+    margin-top: 1630px;
+    border-radius: 10px;
+    margin-left: -140px;
+    
+}
+.vide{
+    
+    display:flex;
+    padding: 50px 5px 20px 20px;
+    position:absolute;
+    margin-top: 1900px;
+    border-radius: 10px;
+    margin-left: -190px;
+}
+span{
+    margin-right: 10px;
+}
+body{
+    overflow:scroll;
+}
+
+.styled-button {
+    background-color: #4CAF50; /* Couleur de fond */
+    color: white; /* Couleur du texte */
+    padding: 8px 16px; /* Espacement interne */
+    font-size: 8px; /* Taille de la police */
+    border: none; /* Enlève la bordure */
+    border-radius: 8px; /* Coins arrondis */
+    cursor: pointer; /* Curseur pointeur */
+    transition: all 0.3s ease; /* Transition pour effet lisse */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombre */
+}
+
+.styled-button:hover {
+    background-color: #45a049; /* Couleur de fond au survol */
+    transform: scale(1.05); /* Agrandit légèrement au survol */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Accentue l'ombre au survol */
+}
+
+.styled-button:active {
+    background-color: #3e8e41; /* Couleur de fond quand on clique */
+    transform: scale(0.95); /* Réduit légèrement pour un effet de clic */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Réduit l'ombre au clic */
+}
+.logo {
+    width: 45px; /* Taille de l'image */
+    position: fixed;
+    border-radius: 50%;
+    top: 50px;
+    left: 0;
+    margin-top: -50px;
+    animation: moveRight 3s infinite alternate; /* Animation avec 3s de durée */
+}
+
+@keyframes moveRight {
+    0% {
+        left: 0; /* Début à gauche */
+    }
+    100% {
+        left: calc(100% - 100px); /* Fin à droite de la fenêtre */
+    }
+}
