@@ -13,32 +13,34 @@
     <header class="sticky-header" style="color: aliceblue;  ">
                 <h1 class="fixed-top" style="background-color: black; text-align: center;border: 1px 1px solid black;position: fixed;width: 100%;margin-left: 0px;">
                     MENU <img src="../asset/image/logo_ispm.png" alt="Logo" class="logo">
+                    
+                <input type="text" id="searchBar" placeholder="Rechercher un plat..." onkeyup="filterMenu() " style="background-color: rgb(196, 196, 196); border-radius: 50px 50px; margin-right: -50%;margin-left: 15%;">
                 </h1>
     </header>
 
-    <div >
+    <div id="menu">
         <div class="sary">
             <h4 style="position: absolute;margin-top: -40px;margin-left: 110px;">Exclusive</h4>
             <span>
    
         
                 <img src="../asset/image/exclusive/kakaoety.jpeg" alt="" width="75" height="60">
-                <p>Cacahuette</p><p>500 MGA</p>
+                <p class="menu-items">Cacahuette</p><p>500 MGA</p>
                 <button class="styled-button" onclick="addToOrder('Cacahuette', 500)">Commander</button>
                </span>
                <span>
                 <img src="../asset/image/exclusive/kakapizo.jpeg" alt="" width="75" height="60">
-                <p>Caca piegon</p><p>700 MGA</p>
+                <p class="menu-items">Caca piegon</p><p>700 MGA</p>
                 <button class="styled-button" onclick="addToOrder('Caca piegon', 700)">Commander</button>
                </span>
                <span>
                 <img src="../asset/image/exclusive/kopoze.jpeg" alt="" width="75" height="60">
-                <p>Kopoze</p><p>1000 MGA</p>
+                <p class="menu-items">Kopoze</p><p>1000 MGA</p>
                 <button class="styled-button" onclick="addToOrder('Kopoze', 1000)">Commander</button>
                </span>
                <span>
                 <img src="../asset/image/exclusive/ronono.jpeg" alt="" width="75" height="60">
-                <p>Ronono</p><p>1000 MGA</p>
+                <p class="menu-items">Ronono</p><p>1000 MGA</p>
                 <button class="styled-button" onclick="addToOrder('Ronono', 1000)">Commander</button>
                </span>
                
@@ -50,22 +52,22 @@
    
         
                 <img src="../asset/image/tskisoa/akoho.jpeg" alt="" width="75" height="60">
-                <p>Akoho</p><p>5000 MGA</p>
+                <p class="menu-items">Akoho</p><p>5000 MGA</p>
                 <button class="styled-button" onclick="addToOrder('Akoho saosy', 5000)">Commander</button>
                </span>
                <span>
                 <img src="../asset/image/tskisoa/henombyritra.jpeg" alt="" width="75" height="60">
-                <p>Henomby</p><p>5000 MGA</p>
+                <p class="menu-items">Henomby</p><p>5000 MGA</p>
                 <button class="styled-button" onclick="addToOrder('Henomby ritra', 5000)">Commander</button>
                </span>
                <span>
                 <img src="../asset/image/tskisoa/ovybaolina.jpeg" alt="" width="75" height="60">
-                <p>Henabaolina</p><p>5000 MGA</p>
+                <p class="menu-items">Henabaolina</p><p>5000 MGA</p>
                 <button class="styled-button" onclick="addToOrder('Ovy & Henabaolina', 5000)" >Commander</button>
                </span>
                <span>
                 <img src="../asset/image/tskisoa/romazava.jpeg" alt="" width="75" height="60">
-                <p>Romazava</p><p>4000 MGA</p>
+                <p class="menu-items">Romazava</p><p>4000 MGA</p>
                 <button class="styled-button" onclick="addToOrder('Romazava', 4000)">Commander</button>
                </span>
                
@@ -76,23 +78,23 @@
    
         
                 <img src="../asset/image/kisoa/henakisoa sosy.jpeg" alt="" width="75" height="60">
-                <p>Henakisoa</p><p>5000 MGA</p>
+                <p class="menu-items">Henakisoa</p><p>5000 MGA</p>
                 <button class="styled-button" onclick="addToOrder('Henakisoa', 5000)">Commander</button>
                </span>
                <span>
                 <img src="../asset/image/kisoa/ravitoto.jpeg" alt="" width="75" height="60">
-                <p>Ravitoto</p><p>5000 MGA</p>
+                <p class="menu-items">Ravitoto</p><p>5000 MGA</p>
                 <button class="styled-button" onclick="addToOrder('Ravitoto', 5000)">Commander</button>
                </span>
                <span>
                 <img src="../asset/image/kisoa/henombyritra.jpeg" alt="" width="75" height="60">
-                <p>Henomby</p><p>5000 MGA</p>
+                <p class="menu-items">Henomby</p><p>5000 MGA</p>
                 <button class="styled-button" onclick="addToOrder('Henomby', 5000)">Commander</button>
                </span>
 
                <span>
                 <img src="../asset/image/kisoa/romazava.jpeg" alt="" width="75" height="60">
-                <p>Romazava</p><p>4000 MGA</p>
+                <p class="menu-items">Romazava</p><p>4000 MGA</p>
                 <button class="styled-button" onclick="addToOrder('Romazava', 4000)">Commander</button>
                </span>
                 
@@ -103,17 +105,17 @@
    
         
                 <img src="../asset/image/gateau/Godrogodro - Agir avec Madagascar (1).jpeg" alt="" width="75" height="60">
-                <p>Godrogodro</p><p>500 MGA</p>
+                <p class="menu-items">Godrogodro</p><p>500 MGA</p>
                 <button class="styled-button" onclick="addToOrder('Godrogodro', 500)">Commander</button>
                </span>
                <span>
                 <img src="../asset/image/gateau/koba ravina.jpeg" alt="" width="75" height="60">
-                <p>Koba ravina</p><p>500 MGA</p>
+                <p class="menu-items">Koba ravina</p><p>500 MGA</p>
                 <button class="styled-button" onclick="addToOrder('Koba Ravina', 500)">Commander</button>
                </span>
                <span>
                 <img src="../asset/image/gateau/koba.jpeg" alt="" width="75" height="60">
-                <p>Koba</p><p>2000 MGA</p>
+                <p class="menu-items">Koba</p><p>2000 MGA</p>
                 <button class="styled-button" onclick="addToOrder('Koba', 2000)">Commander</button>
                </span>
                
@@ -125,17 +127,17 @@
    
         
                 <img src="../asset/image/hanikotrana/mangazo.jpeg" alt="" width="75" height="60">
-                <p>Mangahazo</p><p>500 MGA</p>
+                <p class="menu-items">Mangahazo</p><p>500 MGA</p>
                 <button class="styled-button" onclick="addToOrder('Mangahazo', 500)">Commander</button>
                </span>
                <span>
                 <img src="../asset/image/hanikotrana/mofovotavo.jpeg" alt="" width="75" height="60">
-                <p>MofoVoatavo</p><p>500 MGA</p>
+                <p class="menu-items">MofoVoatavo</p><p>500 MGA</p>
                 <button class="styled-button" onclick="addToOrder('MofoVoatavo', 500)">Commander</button>
                </span>
                <span>
                 <img src="../asset/image/hanikotrana/vomanaga.jpeg" alt="" width="75" height="60">
-                <p>Vomanga</p><p>500 MGA</p>
+                <p class="menu-items">Vomanga</p><p>500 MGA</p>
                 <button class="styled-button" onclick="addToOrder('Vomanga', 500)">Commander</button>
                </span>
                
@@ -147,17 +149,17 @@
    
         
                 <img src="../asset/image/mofomofo/menakely.jpeg" alt="" width="75" height="60">
-                <p>Menakely</p><p>500 MGA</p>
+                <p class="menu-items">Menakely</p><p>500 MGA</p>
                 <button class="styled-button" onclick="addToOrder('Menakely', 500)">Commander</button>
                </span>
                <span>
                 <img src="../asset/image/mofomofo/mofoakondro.jpeg" alt="" width="75" height="60">
-                <p>Akondro</p><p>500 MGA</p>
+                <p class="menu-items">Akondro</p><p>500 MGA</p>
                 <button class="styled-button" onclick="addToOrder('MofoAkondro', 500)">Commander</button>
                </span>
                <span>
                 <img src="../asset/image/mofomofo/mokary.jpeg" alt="" width="75" height="60">
-                <p>Mokary</p><p>500 MGA</p>
+                <p class="menu-items">Mokary</p><p>500 MGA</p>
                 <button class="styled-button" onclick="addToOrder('Mokary', 500)">Commander</button>
                </span>
                <span>
@@ -173,17 +175,17 @@
    
         
                 <img src="../asset/image/trondro/tsondro sosy.jpeg" alt="" width="75" height="60">
-                <p>Saosy</p><p>5000 MGA</p>
+                <p class="menu-items">Saosy</p><p>5000 MGA</p>
                 <button class="styled-button" onclick="addToOrder('TrondroSosy', 5000)">Commander</button>
                </span>
                <span>
                 <img src="../asset/image/trondro/tsondro  pity poid.jpeg" alt="" width="75" height="60">
-                <p>Petit poids</p><p>5000 MGA</p>
+                <p class="menu-items">Petit poids</p><p>5000 MGA</p>
                 <button class="styled-button" onclick="addToOrder('TrondroPITpoids', 5000)">Commander</button>
                </span>
                <span>
                 <img src="../asset/image/trondro/tsondrofrity.jpeg" alt="" width="75" height="60">
-                <p>Frite</p> <p>5000 MGA</p>
+                <p class="menu-items">Frite</p> <p>5000 MGA</p>
                 <button class="styled-button" onclick="addToOrder('TrondroFrity', 5000)">Commander</button>
                </span>
                
@@ -195,17 +197,17 @@
    
         
                 <img src="../asset/image/specialite/akoho.jpeg" alt="" width="75" height="60">
-                <p>Akoho</p><p>5000 MGA</p>
+                <p class="menu-items">Akoho</p><p>5000 MGA</p>
                 <button class="styled-button" onclick="addToOrder('Akoho', 5000)">Commander</button>
                </span>
                <span>
                 <img src="../asset/image/specialite/ovybaolina.jpeg" alt="" width="75" height="60">
-                <p>Henabaolina</p><p>5000 MGA</p>
+                <p class="menu-items">Henabaolina</p><p>5000 MGA</p>
                 <button class="styled-button" onclick="addToOrder('Ovy & Henabaolina', 5000)">Commander</button>
                </span>
                <span>
                 <img src="../asset/image/specialite/sosisy .jpeg" alt="" width="75" height="60">
-                <p>Sosisy</p><p>5000 MGA</p>
+                <p class="menu-items">Sosisy</p><p>5000 MGA</p>
                 <button class="styled-button" onclick="addToOrder('Sosisy', 5000)">Commander</button>
                </span>
               
@@ -229,5 +231,6 @@
     
     <script src="../asset/bootstrap/bootstrap.js"></script>
     <script src="../main.js"></script>
+    <script src="menu.js"></script>
 </body>
 </html>
